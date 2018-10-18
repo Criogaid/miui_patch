@@ -32,7 +32,7 @@ invoke-virtual {v0, v5}, Landroid/content/pm/PackageManager;->getDefaultBrowserP
 ### 移除『我的设备』，恢复为『关于手机』
 代码路径： `com/android/settings/device`
 ```
-# 搜索代码 Lmiui/os/Build;->IS_GLOBAL_BUILD:Z ，该语句会在多个方法出现，定位代码结构与示例方法类似的布尔型方法
+# 搜索代码 Lmiui/os/Build;->IS_GLOBAL_BUILD:Z ，该语句会在多个方法出现，定位代码结构与示例方法类似的布尔方法
 # 将 Lmiui/os/Build;->IS_GLOBAL_BUILD:Z 修改为 Lcom/winter/mysu;->TRUE:Z
 # 参考示例：
 .method public static Ib(Landroid/content/Context;)Z

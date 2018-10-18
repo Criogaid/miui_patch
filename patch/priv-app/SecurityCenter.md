@@ -8,7 +8,7 @@ apktool命令： `apktool d -r *.apk`
 
 ### 移除安全扫描、游戏加速、应用锁、网络助手中的广告
 
-反编译 res，在 `values/public.xml` 分别找到 `display_antivirus_Ads` 、`display_gamebooster_Ads` 、`display_gamebooster_xunyou` 、`overlay_config_datausage_purchase_enabled` （均为 bool 型）对应的 `id`，再在 `smali` 中查找其对应的布尔型方法，return false
+反编译 res，在 `values/public.xml` 分别找到 `display_antivirus_Ads` 、`display_gamebooster_Ads` 、`display_gamebooster_xunyou` 、`overlay_config_datausage_purchase_enabled` （均为 bool 型）对应的 `id`，再在 `smali` 中查找其对应的布尔方法，return false
 ```
 # 同时在路径 com/miui/networkassistant 中搜索以下方法，return false
 .method public isNATrafficPurchaseAvailable()Z
@@ -60,7 +60,7 @@ invoke-virtual {v0}, Lcom/miui/permcenter/install/i;->aB()Z
 
 move-result v0
 
-# 找到该方法中调用的布尔型函数()Z，例如此处的：
+# 找到该方法中调用的布尔函数()Z，例如此处的：
 Lcom/miui/permcenter/d;->cz()Z
 Lcom/miui/permcenter/install/i;->aB()Z
 # 在 com/miui/permcenter 路径查找对应方法，return ture
@@ -72,8 +72,8 @@ Lcom/miui/permcenter/install/i;->aB()Z
 ### 移除安全体检（立即优化）完成页的资讯推荐
 代码路径： `com/miui/securityscan`
 ```
-# 在该路径中查找：key_sc_setting_news_recommend ，此代码会在两个方法出现，对布尔值方法 return false
-# 等同于：反编译res，在 values/public.xml 找到 preference_key_information_setting_close 对应的id，再在 smali 中查找其对应的布尔型方法，return false
+# 在该路径中查找：key_sc_setting_news_recommend ，此代码会在两个方法出现，对布尔方法 return false
+# 等同于：反编译res，在 values/public.xml 找到 preference_key_information_setting_close 对应的id，再在 smali 中查找其对应的布尔方法，return false
 ```
 
 ### 移除安全中心首页底部的推荐广告
@@ -188,7 +188,7 @@ invoke-virtual {v1, v0}, Landroid/preference/PreferenceScreen;->removePreference
 ### 移除安全扫描的系统更新检测
 代码路径： `com/miui/antivirus`
 ```
-# 搜索代码 key_check_item_update，此代码会在两个方法出现，对其中的布尔型方法 return false
+# 搜索代码 key_check_item_update，此代码会在两个方法出现，对其中的布尔方法 return false
 # 移除相关设置项，代码位置： Lcom/miui/antivirus/activity/SettingsActivity.smali
 
 .method protected onCreate
@@ -229,5 +229,5 @@ invoke-virtual {v0, v1}, Landroid/preference/PreferenceCategory;->removePreferen
 # 搜索
 am_update_app_notify 
 am_ads_enable
-# 对应的布尔型方法，return false
+# 对应的布尔方法，return false
 ```

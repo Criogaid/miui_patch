@@ -5,7 +5,7 @@ apktool命令： `apktool d -r *.apk`
 
 ### 移除小米云会员推广 banners
 - 在 `com/miui/cloudservice/ui` 路径下搜索 `micloudMember` 找到类位置；
-- 在该类中搜索代码 `micloudMember` 删除 `addPreference ` 对应的所有代码段，该方法有个布尔型函数的 if 跳转语句，使其直接跳转至 `return-void`；
+- 在该类中搜索代码 `micloudMember` 删除 `addPreference ` 对应的所有代码段，该方法有个布尔函数的 if 跳转语句，使其直接跳转至 `return-void`；
 - MIUI9 中小米云会员推广 banners 跟 `micloudMember` 处在同一方法，删除 `addPreference` 对应的代码段即可。
 
 修改前：
