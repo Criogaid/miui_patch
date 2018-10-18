@@ -87,7 +87,7 @@ invoke-virtual {v0}, Lcom/miui/permcenter/install/i;->aB()Z
 
 move-result v0
 
-# 找到该方法中调用的布尔型函数()Z，例如此处的：
+# 找到该方法中调用的布尔函数()Z，例如此处的：
 Lcom/miui/permcenter/d;->cz()Z
 Lcom/miui/permcenter/install/i;->aB()Z
 # 在 com/miui/permcenter 路径查找对应方法，return ture
@@ -99,15 +99,15 @@ Lcom/miui/permcenter/install/i;->aB()Z
 ### 移除安全体检、游戏加速、病毒扫描页的资讯推荐
 代码路径： `com/miui/securityscan`
 ```
-# 在该路径中查找：key_sc_setting_news_recommend ，此代码会在两个方法出现，对布尔型方法 return false
-# 等同于：反编译res，在 values/public.xml 找到 preference_key_information_setting_close 对应的id，再在 smali 中查找其对应的布尔值函数，return false
+# 在该路径中查找：key_sc_setting_news_recommend ，此代码会在两个方法出现，对布尔方法 return false
+# 等同于：反编译res，在 values/public.xml 找到 preference_key_information_setting_close 对应的id，再在 smali 中查找其对应的布尔函数，return false
 ```
 
 ### 移除游戏加速的迅游网络加速组件
 代码路径： `com/miui/gamebooster/constants`
 ```
 # 反编译res，在 values/public.xml 中找到 display_gamebooster_xunyou 对应的id，如 0x7f0c0004
-# 然后在该路径搜索找到的 id 定位相应布尔型方法，return false
+# 然后在该路径搜索找到的 id 定位相应布尔方法，return false
 # 相当于将方法中的 Lmiui/os/Build;->IS_INTERNATIONAL_BUILD:Z 修改为 Lcom/winter/mysu;->TRUE:Z
 ```
 
@@ -222,7 +222,7 @@ invoke-virtual {v1, v0}, Landroid/preference/PreferenceScreen;->removePreference
 ### 移除安全扫描的系统更新检测
 代码路径： `com/miui/antivirus`
 ```
-# 搜索代码 key_check_item_update，此代码会在两个方法出现，对其中的布尔型方法 return false
+# 搜索代码 key_check_item_update，此代码会在两个方法出现，对其中的布尔方法 return false
 # 移除相关设置项，代码位置： Lcom/miui/antivirus/activity/SettingsActivity.smali
 
 .method protected onCreate
@@ -263,5 +263,5 @@ invoke-virtual {v0, v1}, Landroid/preference/PreferenceCategory;->removePreferen
 # 搜索
 am_update_app_notify 
 am_ads_enable
-# 对应的布尔型方法，return false
+# 对应的布尔方法，return false
 ```
