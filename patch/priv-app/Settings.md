@@ -144,7 +144,7 @@ move-result-object v0
 
 iput-object v0, p0, Lcom/android/settings/HeadsetSettings;->bdc:Landroid/preference/Preference;
 
-在方法结束 return-void 前增加以下代码：
+# 在方法结束 return-void 前增加以下代码：
 # ->bdb 对应 audio_effect_optimize ，->bdc 对应 equalizer
 iget-object v0, p0, Lcom/android/settings/HeadsetSettings;->bdb:Landroid/preference/PreferenceCategory;
 
