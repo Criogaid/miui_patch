@@ -41,11 +41,3 @@ goto :goto_0
 :pswitch_1
 goto :goto_0
 ```
-
-### 移除DRM保护
-代码位置： `com/android/thememanager/jni/DrmAgent.smali`
-```
-.method static constructor <clinit>()V
-# 关键代码： "jni_resource_drm"
-# return null
-```
