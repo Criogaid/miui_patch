@@ -7,10 +7,3 @@ JAR位置： `/system/framework/services.jar`
 .method private checkSystemSelfProtection(Z)V
 # return null
 ```
-
-### 删除签名校验
-代码位置： `com/android/server/pm/PackageManagerService.smali`
-```
-.method static compareSignatures
-# return false
-```
