@@ -13,7 +13,7 @@ apktool命令： `apktool d -r *.apk`
 .method public static setTrue(Landroid/content/Context;)Z
     .locals 1
 	
-	const/4 v0, 0x1
+    const/4 v0, 0x1
 
     return v0
 .end method

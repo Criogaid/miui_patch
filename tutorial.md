@@ -20,6 +20,33 @@ deodex后将以下目录拷贝出来（后面用到）
 ## 应用 miui_patch
 使用 apktool 反编译需要修改的 APK，执行相应方案的修改并回编（注意保留源签名），然后替换到原来的APK。
 
+> miui_patch 修改策略中的 `return false`、`return true` 针对布尔方法（函数名以字母 `Z` 结尾），`return null` 针对无返回值的方法（函数名以字母 `V` 结尾）。
+
+`return true` 指将方法的函数体修改为以下代码：
+```
+.locals 1
+
+const/4 v0, 0x1
+
+return v0
+```
+
+`return false` 指将方法的函数体修改为以下代码：
+```
+.locals 1
+
+const/4 v0, 0x0
+
+return v0
+```
+
+`return null` 指将方法的函数体修改为以下代码：
+```
+.locals 0
+
+return-void
+```
+
 注意：如果你在代码中若使用了 `Lcom/winter/mysu;->TRUE:Z`，必须将 `patch` 目录下的 `smali` 文件夹拷贝到相应位置（**这很重要！！！**）。
 
 ## 删除 MIUI 冗余的 APP
