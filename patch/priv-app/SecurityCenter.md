@@ -24,13 +24,6 @@ apktool命令： `apktool d -r *.apk`
 # 搜索 Lcom/miui/networkassistant/utils/DeviceUtil;->IS_INTERNATIONAL_BUILD:Z 将其改成 Lcom/winter/mysu;->TRUE:Z
 ```
 
-### 移除网络诊断的一键WLAN测速功能
-代码位置： `com/miui/networkassistant/ui/activity/NetworkDiagnosticsActivity.smali`
-```
-.method public onCreateOptionsMenu
-# 搜索 Lmiui/os/Build;->IS_INTERNATIONAL_BUILD:Z 将其改成 Lcom/winter/mysu;->TRUE:Z
-```
-
 ### 恢复应用权限监控&USB安装管理设置入口
 代码位置： `com/miui/permcenter/MainAcitivty.smali`
 ```
